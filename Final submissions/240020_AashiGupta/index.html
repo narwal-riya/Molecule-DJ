@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Molecule DJ 🎶</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/tone@14.7.77/build/Tone.min.js"></script>
+  <style>
+    #moleculeSelect {
+      background: rgba(45, 11, 78, 0.85);
+      color: #ffb6e6;
+      border: 1.5px solid #ff2f7a;
+      border-radius: 6px;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px #ff2f7a33;
+      max-height: 180px;
+      overflow-y: auto;
+      min-width: 320px;
+    }
+    #moleculeSelect option {
+      background: rgba(45, 11, 78, 0.95);
+      color: #ffb6e6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🧪 Molecule DJ</h1>
+      <p class="tagline">Turn molecules into melodies 🎵</p>
+    </header>
+
+    <section class="input-section">
+      <label for="moleculeSelect">Choose a molecule:</label>
+        <select id="moleculeSelect">
+          <option value="">-- Select a molecule --</option>
+          <option value="CCO">Ethanol (CCO)</option>
+          <option value="CC(=O)O">Acetic acid (CC(=O)O)</option>
+          <option value="C1=CC=CC=C1">Benzene (C1=CC=CC=C1)</option>
+          <option value="CCN(CC)CC">Triethylamine (CCN(CC)CC)</option>
+          <option value="C(C(=O)O)N">Glycine (C(C(=O)O)N)</option>
+          <option value="CC(=O)OC1=CC=CC=C1C(=O)O">Aspirin (CC(=O)OC1=CC=CC=C1C(=O)O)</option>
+          <option value="C1=CC(=O)NC=C1">Pyridone (C1=CC(=O)NC=C1)</option>
+          <option value="CC(C)CC1=CC=C(C=C1)C(C)C(=O)O">Ibuprofen (CC(C)CC1=CC=C(C=C1)C(C)C(=O)O)</option>
+          <option value="C1CCCCC1">Cyclohexane (C1CCCCC1)</option>
+          <option value="C1=CC=C2C=CC=CC2=C1">Naphthalene (C1=CC=C2C=CC=CC2=C1)</option>
+          <option value="C(C(=O)O)(N)CC(=O)O">Aspartic acid (C(C(=O)O)(N)CC(=O)O)</option>
+          <option value="C1=CN=CN1">Imidazole (C1=CN=CN1)</option>
+          <option value="CC(C)C(C(=O)O)N">Leucine (CC(C)C(C(=O)O)N)</option>
+          <option value="CC(C)CC(C(=O)O)N">Isoleucine (CC(C)CC(C(=O)O)N)</option>
+          <option value="CC(C)C(C(=O)O)N">Valine (CC(C)C(C(=O)O)N)</option>
+          <option value="C(C(=O)O)CC(=O)O">Glutamic acid (C(C(=O)O)CC(=O)O)</option>
+          <option value="C1=CC2=CC=CC=C2C=C1">Phenanthrene (C1=CC2=CC=CC=C2C=C1)</option>
+          <option value="CCOC(=O)C1=CC=CC=C1">Ethyl benzoate (CCOC(=O)C1=CC=CC=C1)</option>
+          <option value="CC(C)O">Isopropanol (CC(C)O)</option>
+          <option value="CC(=O)N">Acetamide (CC(=O)N)</option>
+          <!-- Add more as needed -->
+        </select>
+
+
+      <input type="text" id="smiles" placeholder="Or enter your SMILES string (e.g. CCO)" />
+      <button onclick="generateMusic()">🎼 Generate</button>
+      <p id="error" class="error"></p>
+    </section>
+
+    <div id="loading" class="hidden">
+      <div class="loader"></div>
+      <p>Generating music...</p>
+    </div>
+
+    <section id="controls" class="hidden">
+      <h2>🎧 Preview & Download</h2>
+      <pre id="output"></pre>
+      <div class="player-controls">
+        <button id="playPauseBtn" onclick="togglePlayPause()">▶️ Play DJ</button>
+        <input type="range" id="progressBar" value="0" min="0" max="100" step="any" />
+      </div>
+      <a id="downloadLink" href="#" download="generated.mid">⬇️ Download MIDI</a>
+    </section>
+
+    <section>
+      <h2>🕺DJ beats!</h2>
+      <svg id="pianoRoll" width="800" height="200"></svg>
+    </section>
+
+    <section>
+      <h2>📜 History</h2>
+      <ul id="history"></ul>
+    </section>
+
+    <footer>
+      <p>Hope you enjoy!! ❤️ </p>
+    </footer>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
