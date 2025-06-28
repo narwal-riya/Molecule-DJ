@@ -1,0 +1,8 @@
+numpy
+pandas
+rdkit
+tensorflow
+scikit-learn
+flask
+flask_cors
+midiutil
